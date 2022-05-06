@@ -1,0 +1,78 @@
+Differene between functional  and class comonent
+functional												class comonent
+no this and state									life cycle methods
+its used for UI										High in functionality									
+			
+
+
+Differene between state and Props
+props												state
+Immutable										Its not immutable
+props in state									this.props in state
+this.props in stateless							useState hook in stateless
+values passed from component			local to class, its managed within class
+function parameters(it comes as 			Its local variable declared
+argument to function)  	
+
+
+
+State:	
+	It should be declared only in constructor.
+	values in state can be modified only using setState method
+	it is asynchrnous function
+	use callback options, if anything need to addressed based on value change in setState
+	if we want to update the state, always use previous State because current state will not have the values of previousState
+	multipleCalls to same function at same time, stategroups them together and perform one opetation like below
+	 this.increment();
+     this.increment();
+     this.increment();	=		increment()
+     this.increment();
+     this.increment();
+
+
+Event Binding
+	{this.functionName.bind(this)}
+	{() = > this.fimctionName()}
+	{this.functionName}   // In constructor  this.functionName = this.functionName.bind(this)
+	{this.functionName} // Instead function use arrow function.
+	
+Life Cycle in React(only for class component)
+
+Mount
+	constructor : its used for initializing state and binding the events. First line should be always super()
+	statis getDerivedStateFromProps : When state of the component depends on changes in props over time. It is rarely used. this cant be used as it is static
+	render Common used/ used for reading props and state. Majority of UI changes are recorded here.
+	componentDidMount: its called only once when all the dom comonents are rendered
+Update
+	statis getDerivedStateFromProps: it decides whether component should rerender or not
+	shouldComponentUpdate: It decides whether to update dom or not
+	render
+	getSnapShotBeforeUpdate:  it called before the changes from the virtual DOM are to be reflected in the DOM
+	componentDidUpdate
+Unmount
+	componentWillUnmount
+Error
+	static getDerivedStateFromError
+	componentDidCatch
+	
+Fragment
+	Used to avoid additional div 
+
+Pure component: it is similar to Regular Component. it implement shouldComponentUpdate method with shallow props and state comparison.  If there is change then it updates dom otherwise it wont 
+
+Memo: Its equavilent to pure component but used for fuctional component 
+
+ref: its used to create reference of dom element. It will be used to get the reference of element or component.
+	 if it is not forward to childComponent then it will be called as component Reference. 
+
+HOA: Its commonly used for reusable code where we will be defining the function which takes Original componet as argument then updates the necessary changes and return back.
+
+props render: its another way of implementing the resuable code i.e. HOA
+
+Context: Its the way of passing values from parent to child without repeating the value passing logic expliticitly. 
+	We need to createContext which provide 2 method i.e provider and consumer.
+	provider: Provides the value i.e where we can pass the value
+	consumer: which helps in conuming the value and handling it over to childer
+	its similar to singleton 
+
+Hooks : it maily used to overcome the confusion of this, reduce lifecycle execution complexity  and reusable code i,e, HOA
